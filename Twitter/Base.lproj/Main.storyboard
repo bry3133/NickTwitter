@@ -30,7 +30,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="163" y="366"/>
+            <point key="canvasLocation" x="147" y="366"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="7VR-cg-lso">
@@ -84,7 +84,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tQk-1H-yV2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QBf-xR-7hw" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationHome" automaticallyAdjustsScrollViewInsets="NO" id="QBf-xR-7hw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pmw-6J-Tgr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

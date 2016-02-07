@@ -1,5 +1,5 @@
 //
-//  TweetsViewController.swift
+//  ProfileViewController.swift
 //  Twitter
 //
 //  Created by Nicholas Miller on 2/7/16.
@@ -8,21 +8,21 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
-    var tweets: [Tweet]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
-            self.tweets = tweets
-        }
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func signOutTouched(sender: AnyObject) {
+        User.currentUser?.logout()
     }
     
 }

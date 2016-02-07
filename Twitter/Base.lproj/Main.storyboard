@@ -25,14 +25,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="9Ve-Sy-R9w" kind="modal" identifier="loginSegue" modalTransitionStyle="flipHorizontal" id="Gk7-xO-OeT"/>
+                        <segue destination="QBf-xR-7hw" kind="modal" identifier="loginSegue" modalTransitionStyle="flipHorizontal" id="42R-31-m37"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="366"/>
+            <point key="canvasLocation" x="163" y="366"/>
         </scene>
-        <!--Tweets View Controller-->
+        <!--Timeline-->
         <scene sceneID="7VR-cg-lso">
             <objects>
                 <viewController storyboardIdentifier="TweetsViewController" id="9Ve-Sy-R9w" customClass="TweetsViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,21 +40,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Og2-or-UvT">
-                                <rect key="frame" x="136" y="90" width="48" height="30"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PFE-Yx-9l7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="onLogout:" destination="9Ve-Sy-R9w" eventType="touchUpInside" id="8Ew-Ui-8sr"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Timeline" id="tZd-pC-kIU">
+                        <barButtonItem key="rightBarButtonItem" title="Profile" id="Lcj-I1-zW3">
+                            <connections>
+                                <segue destination="DB9-Rg-Xj0" kind="push" id="NQK-rY-sly"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sll-LY-o6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="366"/>
+            <point key="canvasLocation" x="937" y="366"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="YIb-Zt-bwV">
+            <objects>
+                <viewController id="DB9-Rg-Xj0" customClass="ProfileViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Oov-wp-nPO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="IkA-zN-Ab5">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="i5j-SW-SzG">
+                            <connections>
+                                <action selector="signOutTouched:" destination="DB9-Rg-Xj0" id="hWK-Yk-rMd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0hQ-qh-7Fr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1321" y="366"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tQk-1H-yV2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QBf-xR-7hw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pmw-6J-Tgr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9Ve-Sy-R9w" kind="relationship" relationship="rootViewController" id="bJr-H4-2uU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8XM-Zi-jGJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="547" y="366"/>
         </scene>
     </scenes>
 </document>

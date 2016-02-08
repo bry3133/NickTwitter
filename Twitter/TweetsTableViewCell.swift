@@ -98,11 +98,17 @@ class TweetsTableViewCell: UITableViewCell {
         if (isRetweet) {
             retweetButton.tintColor = UIColor.greenColor()
             rCountLabel.textColor = UIColor.greenColor()
+            if (tweet.retweetCount != nil) {
+                tweet.retweetCount = tweet.retweetCount! + 1
+            }
             TwitterClient.sharedInstance.retweetMe(tweet.id!)
         }
         else {
             retweetButton.tintColor = UIColor.grayColor()
             rCountLabel.textColor = UIColor.grayColor()
+            if (tweet.retweetCount != nil) {
+                tweet.retweetCount = tweet.retweetCount! - 1
+            }
             TwitterClient.sharedInstance.unRetweetMe(tweet.id!)
         }
     }
@@ -113,11 +119,17 @@ class TweetsTableViewCell: UITableViewCell {
         if (isFav) {
             favoriteButton.tintColor = UIColor.redColor()
             fCountLabel.textColor = UIColor.redColor()
+            if (tweet.user?.favoriteCount != nil) {
+                tweet.user?.favoriteCount = tweet.user!.favoriteCount! + 1
+            }
             TwitterClient.sharedInstance.favoriteMe(tweet.id!)
         }
         else {
             favoriteButton.tintColor = UIColor.grayColor()
             fCountLabel.textColor = UIColor.grayColor()
+            if (tweet.user?.favoriteCount != nil) {
+                tweet.user?.favoriteCount = tweet.user!.favoriteCount! - 1
+            }
             TwitterClient.sharedInstance.unFavoriteMe(tweet.id!)
         }
     }

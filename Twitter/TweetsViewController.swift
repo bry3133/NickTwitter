@@ -13,6 +13,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     var tweets: [Tweet]?
     @IBOutlet weak var tableView: UITableView!
     
+    var timer = NSTimer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,18 +23,26 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
 
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
-            self.tweets = tweets
-//            for tweet in tweets {
-//                print(tweet.text)
-//            }
-            self.tableView.reloadData()
-        }
+        callTwitterUpdateTweetsAPI()
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target:self, selector: Selector("updateMe"), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func updateMe() {
+//        callTwitterUpdateTweetsAPI()
+//        tableView.reloadData()
+    }
+    
+    func callTwitterUpdateTweetsAPI() {
+        TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
+            self.tweets = tweets
+            self.tableView.reloadData()
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

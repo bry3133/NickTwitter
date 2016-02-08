@@ -26,7 +26,7 @@ class Tweet: NSObject {
         createdAt = formatter.dateFromString(createdAtString!)
         
         formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .ShortStyle
+//        formatter.timeStyle = .ShortStyle
         
         createdAtString = formatter.stringFromDate(createdAt!)
     }

@@ -19,6 +19,7 @@ class User: NSObject {
     var screenName: String?
     var profileImageURL: String?
     var tagLine: String?
+    var handle: String?
     var dictionary: NSDictionary
     
     init(dictionary: NSDictionary) {
@@ -28,6 +29,7 @@ class User: NSObject {
         screenName = dictionary["screen_name"] as? String
         profileImageURL = dictionary["profile_image_url"] as? String
         tagLine = dictionary["description"] as? String
+        handle = dictionary["screen_name"] as? String
     }
     
     func logout() {

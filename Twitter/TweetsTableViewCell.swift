@@ -14,6 +14,7 @@ class TweetsTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var tweetNameLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
+    @IBOutlet weak var handleLabel: UILabel!
     
     var tweet: Tweet! {
         didSet {
@@ -28,6 +29,9 @@ class TweetsTableViewCell: UITableViewCell {
             }
             if (tweet.createdAtString != nil) {
                 timeStampLabel.text = "\(tweet.createdAtString!)"
+            }
+            if (tweet.user?.handle != nil) {
+                handleLabel.text = "@\(tweet.user!.handle!)"
             }
         }
     }

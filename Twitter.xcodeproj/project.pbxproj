@@ -80,9 +80,9 @@
 				27E0F0211C67F8E20039F3DB /* Cells */,
 				27E0EFF91C67E3060039F3DB /* ViewControllers */,
 				27435AFC1C614D1300721D26 /* AppDelegate.swift */,
-				27435B001C614D1300721D26 /* Main.storyboard */,
-				27435B061C614D1300721D26 /* Assets.xcassets */,
 				27435B081C614D1300721D26 /* LaunchScreen.storyboard */,
+				27435B061C614D1300721D26 /* Assets.xcassets */,
+				27435B001C614D1300721D26 /* Main.storyboard */,
 				27435B0B1C614D1300721D26 /* Info.plist */,
 				27435B031C614D1300721D26 /* Twitter.xcdatamodeld */,
 			);

@@ -16,6 +16,14 @@ class TweetsTableViewCell: UITableViewCell {
     @IBOutlet weak var timeStampLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
     
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
+    var isRetweet = false
+    var isFav = false
+    
+    @IBOutlet weak var rCountLabel: UILabel!
+    @IBOutlet weak var fCountLabel: UILabel!
+    
     var tweet: Tweet! {
         didSet {
             if (tweet.text != nil) {
@@ -32,6 +40,32 @@ class TweetsTableViewCell: UITableViewCell {
             }
             if (tweet.user?.handle != nil) {
                 handleLabel.text = "@\(tweet.user!.handle!)"
+            }
+            if (tweet.isFavorited != nil) {
+                if (tweet.isFavorited!) {
+                    favoriteButton.tintColor = UIColor.redColor()
+                    fCountLabel.textColor = UIColor.redColor()
+                }
+                else {
+                    favoriteButton.tintColor = UIColor.grayColor()
+                    fCountLabel.textColor = UIColor.grayColor()
+                }
+            }
+            if (tweet.isRetweeted != nil) {
+                if (tweet.isRetweeted!) {
+                    retweetButton.tintColor = UIColor.greenColor()
+                    rCountLabel.textColor = UIColor.greenColor()
+                }
+                else {
+                    retweetButton.tintColor = UIColor.grayColor()
+                    rCountLabel.textColor = UIColor.grayColor()
+                }
+            }
+            if (tweet.retweetCount != nil) {
+                rCountLabel.text = "\(tweet.retweetCount!)"
+            }
+            if (tweet.user?.favoriteCount != nil) {
+                fCountLabel.text = "\(tweet.user!.favoriteCount!)"
             }
         }
     }
@@ -57,5 +91,35 @@ class TweetsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func retweetButtonTouched(sender: AnyObject) {
+        isRetweet = !isRetweet
+        
+        if (isRetweet) {
+            retweetButton.tintColor = UIColor.greenColor()
+            rCountLabel.textColor = UIColor.greenColor()
+            TwitterClient.sharedInstance.retweetMe(tweet.id!)
+        }
+        else {
+            retweetButton.tintColor = UIColor.grayColor()
+            rCountLabel.textColor = UIColor.grayColor()
+            TwitterClient.sharedInstance.unRetweetMe(tweet.id!)
+        }
+    }
+    
+    @IBAction func favoriteButtonTouched(sender: AnyObject) {
+        isFav = !isFav
+        
+        if (isFav) {
+            favoriteButton.tintColor = UIColor.redColor()
+            fCountLabel.textColor = UIColor.redColor()
+            TwitterClient.sharedInstance.favoriteMe(tweet.id!)
+        }
+        else {
+            favoriteButton.tintColor = UIColor.grayColor()
+            fCountLabel.textColor = UIColor.grayColor()
+            TwitterClient.sharedInstance.unFavoriteMe(tweet.id!)
+        }
+    }
+    
 }

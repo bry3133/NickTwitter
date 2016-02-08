@@ -13,7 +13,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     var tweets: [Tweet]?
     @IBOutlet weak var tableView: UITableView!
     
-    var timer = NSTimer()
+//    var timer = NSTimer()
+    
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,11 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 
         callTwitterUpdateTweetsAPI()
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target:self, selector: Selector("updateMe"), userInfo: nil, repeats: true)
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
+//        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target:self, selector: Selector("updateMe"), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,6 +72,24 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    func onRefresh() {
+        delay(2, closure: {
+            self.refreshControl.endRefreshing()
+        })
+        
+        callTwitterUpdateTweetsAPI()
+        
+        self.refreshControl?.endRefreshing()
     }
     
 }
